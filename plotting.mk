@@ -18,8 +18,9 @@ endef
 # $(3): name of the plot (must be output of the gnuplot script)
 # $(4): name of the data file
 # $(5): (optional) additional gnuplot arguments
+# $(6): (optional) additional dependencies
 define plt
-$(call gp_cycle_filenames,$(call pldir,$(1))/$(3)): $(call gpdir,$(1))/$(2) $(call tbdir,$(1))/$(4) | $(call pldir,$(1))
+$(call gp_cycle_filenames,$(call pldir,$(1))/$(3)): $(call gpdir,$(1))/$(2) $(call tbdir,$(1))/$(4) $(6) | $(call pldir,$(1))
 	-module load gnuplot/6.0.0
 	gnuplot -e "$(5)" $(call gpdir,$(1))/$(2)
 	$(call gp_cycle, $(3), $(call pldir,$(1)))
