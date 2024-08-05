@@ -3,8 +3,8 @@ gp_cycle_filenames=$(1).tex $(1).pdf $(1)_labels.pdf
 
 exdir=experiments/$(1)
 pldir=data/plots/$(1)
-gpdir=experiments/$(1)/gp
-tbdir=data/results_tables/$(1)
+gpdir=$(1)
+tbdir=data/tables/$(1)
 
 # Generates a rule for creating the directory data/plots/$(1) (where the plots are stored)
 define pltdir
@@ -15,7 +15,7 @@ endef
 # Targets for generating plots
 # $(1): name of the plot dir (typically the name of the experiment)
 # #(2): name of the gnuplot script
-# $(3): name of the plot (must be output of the gnuplot script)
+# $(3): name of the plot (must be output of the gnuplot script without extension)
 # $(4): name of the data file
 # $(5): (optional) additional gnuplot arguments
 # $(6): (optional) additional dependencies
